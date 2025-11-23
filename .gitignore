@@ -16,9 +16,12 @@ dist-ssr
 /target/
 /src-tauri/target/
 /src-tauri/target/debug/
-/src-tauri/target/release/*
+!/src-tauri/target/release/
+!/src-tauri/target/release/bundle/
 !/src-tauri/target/release/bundle/msi/
 !/src-tauri/target/release/bundle/msi/*
+
+
 .DS_Store
 *.suo
 *.ntvs*
