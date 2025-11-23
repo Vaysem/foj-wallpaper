@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="uk"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta charset="UTF-8">
+<script src="language.js"></script>
+<title data-lang="setting"></title>
+    <style>
+        * {
+            font-family: Arial;
+            color: #fff7;
+            position: relative;
+            box-sizing: border-box;
+        }
+        *:not(imput){
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        :root{
+            --border-color:#d04;
+        }
+        .main-setting-window{
+            margin:50px
+        }
+
+        svg path{
+            transition: all 0.2s linear;
+        }
+
+        .fil1 {fill:#000}
+        .win-header:active {cursor:grabbing !important;}
+
+        .str2,.str1,.svg-hidde-path,.svg-close-path {stroke:var(--border-color);stroke-width:1px;}
+        .svg-hidde,.svg-close{fill:var(--border-color);}
+        .fil2 {fill:url(#grad1);z-index:2}
+
+        svg.main-setting-window g:hover path.str1{
+            d:path("M270.23 36.99c-83.51,-0.36 -106.64,-6.56 -119.06,2.63 -1.37,-5.84 -34.94,-7.03 -42.75,-1.21 -3.65,-4.54 -30.77,-5.61 -28.85,0.81 -13.55,-1.34 -35.91,-6.36 -36.44,19.98l0 -15.22c-0.09,-7.23 -3.66,-10.38 -8.63,-5.72 11.06,-11.09 -9,-40.83 -30.57,-18.9 20.93,-38.64 41.62,-3.62 87.4,-14.93 -8.62,2.74 -5.87,15.99 6.06,11.97 7.44,-2.52 11.92,6.61 15.82,-4.07 12.23,6.92 40.72,11.82 43.68,0.3 10.98,12.4 113.39,9.78 113.34,-4.46 -0.05,14.24 102.36,16.86 113.34,4.46 2.96,11.52 31.46,6.62 43.68,-0.3 3.9,10.68 8.38,1.55 15.83,4.07 11.92,4.02 14.68,-9.23 6.05,-11.97 45.78,11.31 66.48,-23.71 87.4,14.93 -21.57,-21.93 -41.63,7.81 -30.57,18.9 -4.97,-4.66 -8.54,-1.51 -8.63,5.72l0 15.22c-0.53,-26.34 -22.89,-21.32 -36.44,-19.98 1.92,-6.42 -25.19,-5.35 -28.85,-0.81 -7.81,-5.82 -41.38,-4.63 -42.74,1.21 -12.43,-9.19 -35.56,-2.99 -119.07,-2.63z");
+        }
+        svg.main-setting-window g:hover path.str2{
+            d:path("M270.23 221.69c-25.6,0.66 -113.67,-0.73 -127.07,15.98 14.98,-22.43 -28.64,-18.41 -42.28,-7.89 3.62,-10.97 -10.96,-3.5 -15.81,-6.78 -7.77,-5.25 -16.82,-3.83 -14.02,9.27 -11.33,-19.69 -50.54,-8.13 -50.98,21.11 -6.29,-25.01 14.61,-32.88 1.83,-43.59 6.01,4.1 13.82,-2.44 13.91,-9.67 7.74,-33.58 7.32,-88.88 7.32,-140.92 0.53,-26.34 22.89,-21.32 36.44,-19.98 -1.92,-6.42 25.2,-5.35 28.85,-0.81 7.81,-5.82 41.38,-4.63 42.75,1.21 12.42,-9.19 35.55,-2.99 119.06,-2.63 83.51,-0.36 106.64,-6.56 119.07,2.63 1.36,-5.84 34.93,-7.03 42.74,-1.21 3.66,-4.54 30.77,-5.61 28.85,0.81 13.55,-1.34 35.91,-6.36 36.44,19.98 0,52.04 -0.42,107.34 7.32,140.92 0.09,7.23 7.9,13.77 13.91,9.67 -12.78,10.71 7.99,18.74 1.83,43.59 -0.56,-29.25 -39.64,-40.8 -50.97,-21.11 2.79,-13.1 -6.25,-14.52 -14.03,-9.27 -4.85,3.28 -19.43,-4.19 -15.8,6.78 -13.65,-10.52 -57.26,-14.54 -42.28,7.89 -13.4,-16.71 -101.47,-15.32 -127.08,-15.98z");
+        }
+
+        svg.main-setting-window .g-hidde, svg.main-setting-window .g-close {
+            cursor:pointer;
+        }
+
+        svg.main-setting-window .g-close:hover .svg-close-path, svg.main-setting-window .g-hidde:hover .svg-hidde-path
+        {
+            fill:#400;
+            stroke:#f02;
+        }
+        svg.main-setting-window .g-hidde:hover .svg-hidde-path{
+            fill:#222;
+        }
+        svg.main-setting-window .g-close:hover .svg-close{
+            fill:#f02;
+            d:path("M485 21C485 20 482 16 481 21 481 13 487 18 487 20 488 16 494 14 493 21 493 16 489 20 489 21 491 22 494 25 491 28 492 25 489 22 487 23 486 23 483 24 484 28 481 24 483 22 485 21Z")
+        }
+        svg.main-setting-window .g-hidde:hover .svg-hidde{
+            fill:#fff;
+            d:path("M468 19 472 19 471 23 476 22 470 26 464 22 469 23Z")
+        }
+        .footer-patch2{
+            fill:#000;
+            mask-image: url( data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMTgxcHgiIGhlaWdodD0iMjA0NnB4IiB2aWV3Qm94PSIwIDAgNTkwLjA1IDEwMjIiPg0KICA8cGF0aCBmaWxsPSIjMDAwIiBzdHJva2Utd2lkdGg9IjAiIGQ9Ik0zMTQuNDQgMjAxLjk4bDIzOC41IDEzNy43YzEyLjM0LDcuMTMgMTkuNDEsMTkuMzcgMTkuNDEsMzMuNjJsMCAyNzUuNGMwLDE0LjI1IC03LjA3LDI2LjQ5IC0xOS40MSwzMy42MmwtMjM4LjUgMTM3LjdjLTEyLjM1LDcuMTMgLTI2LjQ4LDcuMTMgLTM4LjgzLDBsLTIzOC41IC0xMzcuN2MtMTIuMzQsLTcuMTMgLTE5LjQxLC0xOS4zNyAtMTkuNDEsLTMzLjYybDAgLTI3NS40YzAsLTE0LjI1IDcuMDcsLTI2LjQ5IDE5LjQxLC0zMy42MmwyMzguNSAtMTM3LjdjMTIuMzUsLTcuMTMgMjYuNDgsLTcuMTMgMzguODMsMHptMjc1LjYxIDgyMC4wMmwtMjc3LjMyIDAgMCAtMTM3LjdjMCwtMTQuMjUgNy4wNiwtMjYuNDkgMTkuNDEsLTMzLjYybDIzOC41IC0xMzcuN2M2LjE3LC0zLjU2IDEyLjc5LC01LjM1IDE5LjQxLC01LjM1bDAgMzE0LjM3em0tNTcwLjY0IC0zMDkuMDJsMjM4LjUgMTM3LjdjMTIuMzUsNy4xMyAxOS40MSwxOS4zNyAxOS40MSwzMy42MmwwIDEzNy43IC0yNzcuMzIgMCAwIC0zMTQuMzdjNi42MiwwIDEzLjI0LDEuNzkgMTkuNDEsNS4zNXptMjU3LjkxIC03MTIuOThsMCAxMzcuN2MwLDE0LjI1IC03LjA2LDI2LjQ5IC0xOS40MSwzMy42MmwtMjM4LjUgMTM3LjdjLTYuMTcsMy41NiAtMTIuNzksNS4zNCAtMTkuNDEsNS4zNGwwIC0zMTQuMzYgMjc3LjMyIDB6bTMxMi43MyAzMTQuMzZjLTYuNjIsMCAtMTMuMjQsLTEuNzggLTE5LjQxLC01LjM0bC0yMzguNSAtMTM3LjdjLTEyLjM1LC03LjEzIC0xOS40MSwtMTkuMzcgLTE5LjQxLC0zMy42MmwwIC0xMzcuNyAyNzcuMzIgMCAwIDMxNC4zNnoiLz4NCjwvc3ZnPg==);
+            mask-size: 6px;
+        }
+        .footer-patch{
+            fill:url(#grad2);
+        }
+        ::placeholder{
+            color:#f993;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            transition: opacity 0.2s linear;
+        }
+        body.blur{opacity: .9}
+        hr{
+            opacity: .4;
+        }
+        a{text-decoration: none;cursor: pointer;}
+        .center{
+            margin: auto;
+            text-align: center;
+            z-index: 2;
+            padding: 0 0 4px 0;
+            border-radius: 15px 15px 0 0;
+            overflow: hidden;
+        }
+        label,.footer {
+            display: block;
+            margin: 12px auto 4px;
+            text-align: left;
+            font-size: 14px;
+            height: 16px;
+        }
+        .group {
+            width: 700px;
+            display: flex;
+            flex-wrap: wrap;
+            text-align: left;
+        }
+        .group > button:last-child, .group > .last {
+            border-radius: 0 5px 5px 0;
+            max-width: 56px;
+        }
+        input,select {
+            width: 450px;
+            height: 32px;
+            color: #fdf;
+            font-size: 14px;
+            padding: 5px 5px;
+            border: 1px solid #fdf;
+            text-shadow: 0 1px 2px #000;
+            background: #0005;
+            cursor: text;
+            border-radius: 5px;
+            outline: none;
+        }
+        select{
+            width: auto;
+            min-width: 160px;
+            background: #0f0014;
+            cursor: pointer;
+        }
+        button {
+            background: none;
+            border: 1px solid #fdf;
+            color: #000;
+            min-width: 40px;
+            cursor: pointer;
+            padding: 2px 15px;
+            line-height: 26px;
+            border-radius: 5px;
+            box-shadow: 0 0 2px 1px #0008 inset;
+            transition: all 0.3s linear;
+        }
+        button:after{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(#fff 48%, #bae 52%);
+            left:0;
+            top:0;
+            z-index: -1;
+            transition: opacity 0.3s linear;
+        }
+        button:hover, button:hover *{
+            color: #fff;
+            text-shadow: 0 0 22px #ff50c8;
+        }
+        button:hover:after{
+            opacity: 0;
+        }
+        button b {
+            color: #000;
+            font-size: 15px;
+            line-height: 22px;
+            display: inline-block;
+            width: 26px;
+            transition: all 0.3s linear;
+        }
+        .group{transition: all 0.1s linear;}
+        .group button, .group:not(.no-wrap) select, .group input {
+            margin-left: -1px;
+            border-radius: 0;
+            min-width: auto;
+            outline: none;
+            flex: auto;
+        }
+        .group > *:first-child,.group > select:first-child{
+            border-radius: 5px 0 0 5px;
+            margin: 0;
+        }
+        .group select.one, .one,.group > select.one:focus{
+            border-radius: 5px !important;
+        }
+
+        .group:not(.no-wrap) label{    
+            width: auto;
+            margin: 4px 0px;
+            opacity: 1 !important;
+        }
+        .group:not(.no-wrap):has(input[type=checkbox]:not(:checked)){
+            opacity: .5;
+        }
+        .refreh{
+            font-size: 22px;
+            line-height: 14px;
+            translate: -2px 3px;
+            color: #600622;
+        }
+        .footer{
+            margin: 15px 0 0 0;
+            text-align: end;
+        }
+        .footer button{
+            min-width: 190px;
+        }
+        footer{
+            font-size: 12px;
+            color:#888;
+            position: absolute;
+            bottom: 15px;
+            width: 100%;
+            left: 0;
+            height: 0;
+            
+        }
+        footer a{
+            display: inline-block;
+            top: -13px;
+        }
+        .left{
+            float: left;
+        }
+        #language{
+            margin-left: 6px;
+        }
+        .checkbox-label > span{
+            margin-left: 6px;
+            display: block;
+            width: 54px;
+            height: 24px;
+            background: #0009;
+            border-radius:23px;
+            border:1px solid #fff;
+            cursor: pointer;
+        }
+        .checkbox-label > span:before{
+            content: 'off';
+            font-size: 11px;
+            text-align: center;
+            line-height: 16px;
+            display: block;
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-radius:23px;
+            top:2px;
+            left: 2px;
+            background: #444;
+            color:#fff;
+            transition: all 0.1s linear;
+        }
+        input[type=checkbox]:checked ~ label.checkbox-label>span:before{
+            content: 'on';
+            left: 32px;
+            background: #fff;
+            color:#004918;
+        }
+        .d-none,.tab{
+            display: none;
+        }
+        .tab.active{
+            display: block;
+        }
+        .tab-title{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 12px;
+            margin-bottom: -5px;
+            z-index: 9;
+            height: 2px;
+        }
+        .tab-title:before{
+            content: "";
+            display: block;
+            border-top: 2px solid #d04;
+            width: 100%;
+            z-index: 1;
+        }
+        .tab-title > *{
+            display: block;
+            margin: 0 -4px;
+            padding: 6px 0;
+            cursor: pointer;
+            border: 2px solid #d04;
+            border-top: none;
+            height: 32px;
+            border-radius: 0 0 10px 10px;
+            font-size: 13px;
+            min-width: 124px;
+            background: #1d0027;
+            z-index: 0;
+        }
+        .tab-title > *:after, .tab-title > *:before{
+            content: "";
+            display: block;
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            top:-2px;
+        }
+        .tab-title > *:before{
+            right: 100%;
+            border-top: 2px solid #d04;
+            border-right: 2px solid #d04;
+            border-radius: 0 10px 0 0;
+            box-shadow: 3px -3px 0 2px #1d0027;
+        }
+        .tab-title > *:after{
+            left:100%;
+            border-top: 2px solid #d04;
+            border-left: 2px solid #d04;
+            border-radius: 10px 0 0 0;
+            box-shadow: -3px -3px 0 2px #1d0027;
+        }
+
+        .tab-title > *.active{
+            font-weight: bold;
+            z-index: 2;
+            height: 40px;
+            padding: 9px 0;
+            box-shadow: 0 -5px 0 -2px #1d0027;
+            cursor: default;
+        }
+        .mr-auto{
+            margin-right: auto;
+        }
+        .checkbox-label{
+            display: flex;
+        }
+        .no-wrap{
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .group.no-wrap label{
+            margin: 0 0 0;
+            width: auto;
+            display: flex;
+            align-items: center;
+        }
+        body > svg{
+            position: absolute;
+            margin: 10px;
+            width: calc(100% - 30px);
+            height: calc(100% - 60px);
+            z-index: 1;
+            filter:drop-shadow(0px 10px 4px #000) drop-shadow(0px 10px 15px #f085);
+        }
+        .coll-2{
+            display: flex;
+            gap: 25px;
+        }
+        .coll-2 > * {
+            width: 50%;
+        }
+        .coll-2 > *:last-child{
+            margin: 0;
+        }
+        .coll-2 .group,
+        .coll-2 .group > *{
+            width: auto;
+        }
+        .coll-2 .group:first-child{
+            flex: auto;
+        }
+        input[type=color]{
+            cursor:pointer;
+            padding: 0 5px;
+        }
+        input[type=color]:before{
+            content: "🎨";
+            position: absolute;
+            top: 4px;
+            left: 10px;
+        }
+        .load, .load *,.load .checkbox-label > span:before{
+            transition: none !important;
+        }
+        .w135{
+            width: 135px;
+        }
+        button[onclick*=openSelectFileWindow] {
+            width: 137px;
+        }
+    </style>
+</head>
+<body>
+<svg class="main-setting-window" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="900px" height="423px" viewBox="0 0 540.46 254" preserveAspectRatio="none">
+    <defs>
+        <linearGradient id="grad1" x1="0" x2="0" y1="0" y2="100%">
+            <stop offset="0%" stop-color="#304"></stop>
+            <stop offset="100%" stop-color="#000"></stop>
+        </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%" gradientTransform="rotate(0,90,0) ">
+        <stop offset="10%" stop-color="#0000" />
+        <stop offset="50%" stop-color="#501" />
+        <stop offset="90%" stop-color="#0000" />
+    </linearGradient>
+    </defs>
+    <g>
+        <g class="win-header">
+            <path data-tauri-drag-region="" class="fil1 str1" id="path_header" d="M270.23 36.97c-83.51,-0.36 -106.64,-6.55 -119.06,2.63 -1.37,-5.83 -34.94,-7.02 -42.75,-1.21 -3.65,-4.54 -30.77,-5.61 -28.85,0.81 -13.55,-1.33 -35.91,-6.36 -36.44,19.98l0 -15.21c-0.09,-7.23 -3.66,-10.39 -8.63,-5.73 11.06,-11.08 3.24,-36.62 -33.87,-26.9 44.66,-25.67 44.92,4.38 90.7,-6.93 -8.62,2.75 -5.87,15.99 6.06,11.97 7.44,-2.51 11.92,6.61 15.82,-4.06 12.23,6.91 40.72,11.82 43.68,0.3 10.98,12.4 113.39,9.77 113.34,-4.46 -0.05,14.23 102.36,16.86 113.34,4.46 2.96,11.52 31.46,6.61 43.68,-0.3 3.9,10.67 8.38,1.55 15.83,4.06 11.92,4.02 14.68,-9.22 6.05,-11.97 45.78,11.31 46.04,-18.74 90.7,6.93 -37.11,-9.72 -44.93,15.82 -33.87,26.9 -4.97,-4.66 -8.54,-1.5 -8.63,5.73l0 15.21c-0.53,-26.34 -22.89,-21.31 -36.44,-19.98 1.92,-6.42 -25.19,-5.35 -28.85,-0.81 -7.81,-5.81 -41.38,-4.62 -42.74,1.21 -12.43,-9.18 -35.56,-2.99 -119.07,-2.63z"></path>
+            <image data-tauri-drag-region="" x="54" y="20.5" height="10px" width="10px" xlink:href="data:image/webp;base64,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"></image>
+            <path data-tauri-drag-region="" id="pathTitle" d="M67 30 400 30"></path>
+            <text data-tauri-drag-region="">
+                <textPath data-tauri-drag-region="" id="svg-title" fill="#fff" font-size="9px" href="#pathTitle" data-lang="setting">FOJ wallpaper </textPath>
+            </text>
+
+            <g class="g-hidde">
+                <path class="svg-hidde-path" d="M479 28C476.4 24.5 476.3 19.6 479 16L466 17C459 17.5 459 26.5 466 27Z"></path>
+                <path class="svg-hidde" d="M468 18 472 18 471 23 476 20 470 27 464 20 469 23Z"></path>
+            </g>
+
+            <g class="g-close">
+                <path class="svg-close-path" d="M477 22A1 1 0 00497 22 1 1 0 00477 22Z"></path>
+                <path class="svg-close" d="M485 21C485 20 483 16 480 18 483 14 487 18 487 20 488 16 492 14 494 18 492 16 489 20 489 21 491 22 493 25 493 28 490 23 490 25 487 23 484 25 482 24 481 28 481 23 483 22 485 21Z"></path>
+            </g>
+
+        </g>
+        <path class="fil2 str2" d="M270.23 221.67c-25.6,0.66 -113.67,-0.73 -127.07,15.99 14.98,-22.43 -28.64,-18.41 -42.28,-7.89 3.62,-10.97 -10.96,-3.5 -15.81,-6.78 -7.77,-5.25 -16.82,-3.83 -14.02,9.26 -11.33,-19.68 -54.95,-1.54 -61.19,21.12 1.53,-23.96 24.82,-32.89 12.04,-43.59 6.01,4.09 13.82,-2.45 13.91,-9.68 7.74,-33.58 7.32,-88.87 7.32,-140.92 0.53,-26.34 22.89,-21.31 36.44,-19.98 -1.92,-6.42 25.2,-5.35 28.85,-0.81 7.81,-5.81 41.38,-4.62 42.75,1.21 12.42,-9.18 35.55,-2.99 119.06,-2.63 83.51,-0.36 106.64,-6.55 119.07,2.63 1.36,-5.83 34.93,-7.02 42.74,-1.21 3.66,-4.54 30.77,-5.61 28.85,0.81 13.55,-1.33 35.91,-6.36 36.44,19.98 0,52.05 -0.42,107.34 7.32,140.92 0.09,7.23 7.9,13.77 13.91,9.68 -12.78,10.7 10.51,19.63 12.05,43.59 -6.24,-22.66 -49.86,-40.8 -61.19,-21.12 2.79,-13.09 -6.25,-14.51 -14.03,-9.26 -4.85,3.28 -19.43,-4.19 -15.8,6.78 -13.65,-10.52 -57.26,-14.54 -42.28,7.89 -13.4,-16.72 -101.47,-15.33 -127.08,-15.99z"></path>
+
+        <path class="footer-patch" d="m146.72 232.14c5.38-3.05 12.73-4.85 17.62-5.89 5.77-1.22 11.65-2.08 17.51-2.78 6.52-.78 13.08-1.34 19.63-1.79 13.08-.89 26.2-1.3 39.3-1.54 5.49-.11 10.98-.17 16.48-.24 8.42-.1 16.06-.1 24.49 0 5.49.07 10.98.13 16.47.24 13.11.24 26.23.65 39.31 1.54 6.55.45 13.11 1.01 19.63 1.79 5.86.7 11.74 1.56 17.51 2.78 4.89 1.04 12.24 2.84 17.62 5.89-.84-2.78-.79-5.68 1.27-8.13 2.92-3.49 8.7-4.41 12.99-4.61 8.73-.39 21.67 2.03 29.91 6.82 0-1.21.32-2.37 1.25-3.26 1.39-1.34 3.6-1.47 5.43-1.43 2.02.05 4.03.33 6.05.4 1.21.04 3.16.04 4.2-.67 3.36-2.27 8.34-4.18 12.3-2.35 3.28 1.52 4.3 4.8 4.34 8.15 3.04-2.86 7.02-4.42 11.38-4.95 6.51-.81 13.55.66 19.64 2.94 14.86 6.55 12.68-11.31 6.14-15.32-3.1-2.31-5.17-6.11-5.27-9.99-2.17-9.43-3.46-19.2-4.4-28.82-1.12-11.52-1.74-23.11-1.613-37.92-3.907.006-450.877.003-452.285 0-.469 14.32-1.089 25.91-2.219 37.43-.94 9.62-2.23 19.39-4.39 28.82-.11 3.88-2.18 7.68-5.28 9.99-5.46 4.38-9.43 21.43 6.15 15.32 6.09-2.28 13.13-3.75 19.64-2.94 4.36.53 8.34 2.09 11.38 4.95.04-3.35 1.06-6.63 4.34-8.15 3.95-1.83 8.93.08 12.29 2.35 1.04.71 2.99.71 4.2.67 2.02-.07 4.03-.35 6.05-.4 1.83-.04 4.04.09 5.44 1.43.93.89 1.25 2.05 1.25 3.26 8.23-4.79 21.17-7.21 29.91-6.82 4.28.2 10.06 1.12 12.99 4.61 2.06 2.45 2.11 5.35 1.27 8.13z"/>
+        <path class="footer-patch2" d="m146.72 232.14c5.38-3.05 12.73-4.85 17.62-5.89 5.77-1.22 11.65-2.08 17.51-2.78 6.52-.78 13.08-1.34 19.63-1.79 13.08-.89 26.2-1.3 39.3-1.54 5.49-.11 10.98-.17 16.48-.24 8.42-.1 16.06-.1 24.49 0 5.49.07 10.98.13 16.47.24 13.11.24 26.23.65 39.31 1.54 6.55.45 13.11 1.01 19.63 1.79 5.86.7 11.74 1.56 17.51 2.78 4.89 1.04 12.24 2.84 17.62 5.89-.84-2.78-.79-5.68 1.27-8.13 2.92-3.49 8.7-4.41 12.99-4.61 8.73-.39 21.67 2.03 29.91 6.82 0-1.21.32-2.37 1.25-3.26 1.39-1.34 3.6-1.47 5.43-1.43 2.02.05 4.03.33 6.05.4 1.21.04 3.16.04 4.2-.67 3.36-2.27 8.34-4.18 12.3-2.35 3.28 1.52 4.3 4.8 4.34 8.15 3.04-2.86 7.02-4.42 11.38-4.95 6.51-.81 13.55.66 19.64 2.94 14.86 6.55 12.68-11.31 6.14-15.32-3.1-2.31-5.17-6.11-5.27-9.99-2.17-9.43-3.46-19.2-4.4-28.82-1.12-11.52-1.74-23.11-1.613-37.92-3.907.006-450.877.003-452.285 0-.469 14.32-1.089 25.91-2.219 37.43-.94 9.62-2.23 19.39-4.39 28.82-.11 3.88-2.18 7.68-5.28 9.99-5.46 4.38-9.43 21.43 6.15 15.32 6.09-2.28 13.13-3.75 19.64-2.94 4.36.53 8.34 2.09 11.38 4.95.04-3.35 1.06-6.63 4.34-8.15 3.95-1.83 8.93.08 12.29 2.35 1.04.71 2.99.71 4.2.67 2.02-.07 4.03-.35 6.05-.4 1.83-.04 4.04.09 5.44 1.43.93.89 1.25 2.05 1.25 3.26 8.23-4.79 21.17-7.21 29.91-6.82 4.28.2 10.06 1.12 12.99 4.61 2.06 2.45 2.11 5.35 1.27 8.13z"/>
+    </g>
+</svg>
+<div class="center">
+    <div class="tab-container">
+        <div class="tab active">
+    <div>
+        <label for="set_file" data-lang="select_file_label"></label>
+        <div class="group">
+            <input type="text" id="set_file" value="default" disabled="disabled">
+            <button type="button" onclick="openSelectFileWindow()" data-lang="select_file_title:title;select_file_insert"><b>📁</b></button>
+            <button type="button" onclick="refreshFile()" data-lang="select_reset:title"><b>❌</b></button>
+            <button type="button" onclick="reload()" data-lang="btn_refreh_title:title"><b class="refreh">⟲</b></button>
+        </div>
+    </div>
+
+    <div>
+        <label for="parse_url" data-lang="parse_url_title:title;parse_url_label"></label>
+        <div class="group load">
+            <input type="text" id="parse_url" name="parse_url" value="" data-lang="parse_url_placeholder:placeholder">
+            <select name="parse_url_time" id="parse_url_time" class="w135" data-lang="update_frequency:title">
+                <option value="1" data-lang="time_1s">🕘 </option>
+                <option value="2" data-lang="time_2s">🕘 </option>
+                <option value="5" data-lang="time_5s">🕘 </option>
+                <option value="30" data-lang="time_30s">🕘 </option>
+                <option value="60" data-lang="time_1m">🕘 </option>
+                <option value="300" data-lang="time_5m">🕘 </option>
+                <option value="600" data-lang="time_10m">🕘 </option>
+            </select>
+            <button type="button" id="parse_url_run" class="last" data-lang="execute_command:title"><b>▶</b></button>
+            <input type="checkbox" name="parse_url_on" id="parse_url_on" class="d-none">
+            <label for="parse_url_on" class="checkbox-label"><span></span></label>
+        </div>
+    </div>
+        </div>
+        <div class="tab">
+            <div class="coll-2">
+                
+            <div>
+                <label for="sys_info_time" data-lang="sys_info_title:title;sys_info_label"></label>
+                <div class="group load">
+                    <select name="sys_info_time" id="sys_info_time" data-lang="update_frequency:title">
+                        <option value="0.5" data-lang="time_500ms">🕘 </option>
+                        <option value="1" data-lang="time_1s">🕘 </option>
+                        <option value="2" data-lang="time_2s">🕘 </option>
+                    </select>
+                    <button type="button" id="sys_info_run" class="last" data-lang="execute_command:title"><b>▶</b></button>
+                    <input type="checkbox" name="sys_info_on" id="sys_info_on" class="d-none">
+                    <label for="sys_info_on" class="checkbox-label"><span></span></label>
+                </div>
+            </div>
+
+            <div>
+                <label for="set_mouse_time" data-lang="set_mouse_title:title;set_mouse_label"></label>
+                <div class="group load">
+                    <select name="set_mouse_time" id="set_mouse_time" data-lang="update_frequency:title">
+                        <option value="0.01" data-lang="time_10ms">🕘 </option>
+                        <option value="0.02" data-lang="time_20ms">🕘 </option>
+                        <option value="0.03" data-lang="time_30ms">🕘 </option>
+                        <option value="0.05" data-lang="time_50ms">🕘 </option>
+                    </select>
+                    <button type="button" id="set_mouse_run" class="last" data-lang="execute_command:title"><b>▶</b></button>
+                    <input type="checkbox" name="set_mouse_on" id="set_mouse_on" class="d-none">
+                    <label for="set_mouse_on" class="checkbox-label"><span></span></label>
+                </div>
+            </div>
+            </div>
+
+            <div class="coll-2">
+                <div>
+                    <label for="context_command" data-lang="context_command_title:title;context_command_label"></label>
+                    <div class="group load">
+                        <input type="text" id="context_command" value="context_command={}" disabled="disabled">
+                        <button type="button" id="context_command_run" class="last" data-lang="context_command_get:title"><b>▶</b></button>
+                        <input type="checkbox" name="context_command_on" id="context_command_on" class="d-none">
+                        <label for="context_command_on" class="checkbox-label"><span></span></label>
+                    </div>
+                </div>
+                <div>
+                    <label for="theme_left_tray_menu" data-lang="theme_left_tray_menu_title:title;theme_left_tray_menu_label"></label>
+                    <div class="group">
+                        <input type="color" name="theme_left_tray_menu" id="theme_left_tray_menu" class="one" value="#d00040">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="tab-title">
+            <span data-lang="tab_basic" class="active"></span>
+            <span data-lang="tab_addition"></span>
+        </div>
+    </div>
+    <div>
+        <label data-lang="system_setting_label"></label>
+
+        <div class="group no-wrap load">
+            <label for="language" data-lang="language"></label>
+            <select name="language" id="language" class="mr-auto"></select>
+            <input type="checkbox" name="autoload" id="autoload" class="d-none">
+            <label for="autoload" class="checkbox-label"><text data-lang="auto_run"></text> <span></span></label>
+        </div>
+    </div>
+    <hr>
+    <div class="footer">
+        <button onclick="openDevTool()" type="button" class="left"><b>🛠</b> Dev Tool Page</button>
+        <button onclick="save()" type="button" data-lang="save_setting"><b>📥</b> </button>
+    </div>
+    <footer>
+        <a href="#" onclick="autor()" data-lang="about_us"></a>
+    </footer>
+</div>
+<script>
+    languageInsert();
+
+    const {open, message} = window.__TAURI__.dialog;
+    const {invoke} = window.__TAURI__.tauri;
+    const win = window.__TAURI__.window.appWindow;
+    const webwiew = window.__TAURI__.window.WebviewWindow;
+    const path = window.__TAURI__.path;
+
+    document.querySelector('.g-hidde').addEventListener('click', () => win.minimize())
+    document.querySelector('.g-close').addEventListener('click', () => win.close())
+    document.addEventListener('contextmenu', event => event.preventDefault())
+
+    function initRunAllButton() {
+        const lineBreak = "\n===============================\n";
+        document.getElementById('parse_url_run').onclick = async e => {
+            const url = e.target.closest('.group').querySelector('input').value.trim();
+            if (url.length > 9) {
+                let d = await invoke('parse_url', {url: url});
+                d = lineBreak + (d.slice(0, 100) + (d.length > 100 ? '.....' : '')) + lineBreak;
+                alert(parse_url_alert.replace('*', d) + localStorage.getItem('path'))
+            }
+        }
+        document.getElementById('sys_info_run').onclick = async e => {
+            let d = lineBreak + await invoke('sys_info') + lineBreak;
+            alert(sys_info_alert.replace('*', d) + localStorage.getItem('path'));
+        }
+        document.getElementById('set_mouse_run').onclick = async e => {
+            let d = lineBreak + await invoke('mouse_pos') + lineBreak;
+            alert(set_mouse_alert.replace('*', d) + localStorage.getItem('path'));
+        }
+        document.getElementById('context_command_run').onclick = async e => {
+            let d = await invoke('get_command', {on: localStorage.getItem('context_command_on') == 1 ? true : false}),
+                item = decodeURI(d).split(';'),
+                text = [];
+            if (item.length > 1) {
+                item.forEach((e, i) => {
+                    let command = e.split('🗲')
+                    if (command.length > 1) {
+                        text.push(command[0] + ": !RUN(" + command[1] + ")")
+                    } else {
+                        text.push(e + ": function()")
+                    }
+                })
+                alert(context_command_alert + lineBreak + text.join("\n"));
+            } else {
+                alert(context_command_alert_none);
+            }
+        }
+    }
+    initRunAllButton()
+
+    const backgroundSvgFooter = () =>{
+        const backgroun = document.getElementById('grad2')
+        document.addEventListener('mousemove', function(event) {
+            let mouseX = event.clientX;
+            mouseX = 100 / 900 * mouseX
+            backgroun.setAttribute('x1',mouseX - 50 +'%')
+            backgroun.setAttribute('x2', mouseX + 50 + '%')
+        });
+    }
+    backgroundSvgFooter();
+
+    const item_setting =
+    [
+        'parse_url',
+        'parse_url_time',
+        'parse_url_on',
+        'sys_info_time',
+        'sys_info_on',
+        'set_mouse_time',
+        'set_mouse_on',
+        'context_command_on',
+        'theme_left_tray_menu'
+    ];
+    item_setting.forEach(e=>{
+        let item = localStorage.getItem(e)
+        if(item !== null){
+            let el = document.getElementById(e)
+            switch (el.type) {
+                case 'checkbox':
+                    el.checked = parseInt(item)
+                    break;
+                case 'color':
+                    el.value = item == "#000000" ? "#000011" : "#000000"; 
+                    setTimeout(()=>{el.value = item;}, 10)
+                    break;
+                default:
+                    el.value = item
+                    break;
+            }
+        }else{
+            console.error(e)
+        }
+    })
+    function saveCustomSetting(){
+        item_setting.forEach(e=>{
+            let el = document.getElementById(e)
+            if(el){
+                switch (el.type) {
+                    case 'checkbox':
+                        localStorage.setItem(e, el.checked ? 1 : 0)
+                        break;
+                    default:
+                        localStorage.setItem(e, el.value)
+                        break;
+                }
+            }else{
+                console.error(e)
+            }
+        })
+    }
+
+    document.querySelectorAll('.tab-container').forEach(el => {
+        el.querySelector('.tab-title').onclick = e =>{
+            if(!e.target.classList.contains('active') && e.target.parentNode.classList.contains('tab-title')){
+                const index = Array.from(e.target.parentNode.children).indexOf(e.target);
+                el.querySelectorAll('.active').forEach(s=>s.classList.remove('active'))
+                el.querySelectorAll('.tab')[index].classList.add('active')
+                e.target.classList.add('active')
+            }
+        }
+    })
+    function reload_active_tab() {
+        let get = {};
+        location.search?.split('?')[1]?.split('&').forEach(e=>{let [k,v] = e.split('=');
+        get[k]=decodeURI(v ? v : '')})
+        if(typeof get.tab != 'undefined' && get.tab != 0){
+            document.querySelectorAll('.tab-title *')[parseInt(get.tab)].click()
+        }
+    }
+    reload_active_tab()
+
+    async function getAutoload(){
+        let checkAutoload = document.getElementById('autoload')
+        await invoke('get_autoload').then(
+            ok => {
+                checkAutoload.checked = false
+                if(ok == 1){
+                    checkAutoload.checked = true
+                }
+            }, 
+            err => {
+                console.error('block get_autoload')
+            }            
+        );        
+    }
+    getAutoload()
+
+    const select_language = document.getElementById('language')
+    for(let [key,val] of Object.entries(localization)){
+        let e = document.createElement('option')
+        e.value = key
+        e.innerHTML = val.name
+        if(key == lang_code) e.selected = 'selected'
+        select_language.appendChild(e)
+    }
+
+    async function autor(){
+        event.preventDefault();
+        await message(about_info, about_title)
+    }
+    async function showWindowAnim() {
+        let endP = await win.innerPosition(), i = 0;
+        endP.y += 900;
+        win.setPosition(endP)
+        win.show();
+        document.body.classList.add('blur');
+        let iter = setInterval(e => {
+            if (i < 42) {
+                i++
+                endP.y -= 20
+                win.setPosition(endP)
+            } else {
+                document.body.classList.remove('blur');
+                clearInterval(iter)
+            }
+        }, 4)
+    }
+    if(location.search == ''){
+        showWindowAnim()
+    }
+
+    win.listen("tauri://focus", ({event, payload}) => {
+        document.body.classList.remove('blur'); 
+    })
+    win.listen("tauri://blur", ({event, payload}) => {
+        document.body.classList.add('blur');
+    })
+
+    let host_path = '';
+    async function desktop() {
+        host_path = await path.desktopDir();
+        getSettingPath()
+    }
+    desktop()
+
+    async function openDevTool(){
+        if(await invoke("valid", {path:localStorage.getItem('path')}) == false){
+            return await  message(error_dev_tool_text, error_dev_tool_title)
+        }
+        await invoke("devtools_window", {label: 'main-fon'})
+    }
+
+    async function getSettingPath(){
+        let host_file = localStorage.getItem('path')
+        if(host_file){
+            document.getElementById('set_file').value = host_file
+        }else{
+            document.getElementById('set_file').value = host_path
+        }
+    }
+
+    async function openSelectFileWindow() {
+        await open({
+            title: select_file_title,
+            defaultPath: host_path,
+            multiple: false,
+            directory: false,
+            recursive: false,
+            filters: [{name: select_file_text, extensions: ["*"]}]
+        }).then(e=>{
+            if(e){
+                document.getElementById('set_file').value = e
+            }
+        })
+    }
+    function refreshFile(){
+        document.getElementById('set_file').value = host_path
+    }
+    async function save(){
+        localStorage.setItem('path', document.getElementById('set_file').value) // old version
+        localStorage.setItem('lang', select_language.value) // old version
+        await invoke('set_language_code', {language: select_language.value})
+        await invoke('set_autoload', {on: document.getElementById('autoload').checked})
+        saveCustomSetting()
+        reload()
+    }
+    function reload() {
+        new webwiew('main-fon', { url: 'default.html',visible:false, title:"foj-wallpaper" }).close();
+        setTimeout(()=>{
+            async function rm1(){
+                await invoke("reload_foj")
+                let url = location.origin + location.pathname,
+                index_tab =  Array.from(document.querySelectorAll('.tab-title *')).indexOf(document.querySelector('.tab-title .active'))
+                location.href =  url + (index_tab ? '?tab=' + index_tab : '?_=0')
+            }
+            rm1();
+        },20)
+    }
+    document.addEventListener('keydown', e => {
+        if (e.ctrlKey && e.shiftKey) {
+            win.close()
+        }
+    })
+    setTimeout(()=>{ document.querySelectorAll('.load').forEach(e=>e.classList.remove('load')) },50)
+</script>
+</body>
+</html>

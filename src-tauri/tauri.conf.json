@@ -1,0 +1,54 @@
+{
+  "build": {
+    "devPath": "../src",
+    "distDir": "../src",
+    "withGlobalTauri": true
+  },
+  "package": {
+    "productName": "foj-wallpaper",
+    "version": "0.1.1"
+  },
+  "tauri": {
+    "systemTray": {
+      "iconPath": "icons/tray.ico",
+      "iconAsTemplate": true
+    },
+    "allowlist": {
+      "all": true,
+      "window": {
+        "setFullscreen": true
+      },
+      "shell": {
+        "all": false,
+        "open": true
+      },
+      "path": {
+        "all": true
+      },
+      "dialog": {
+        "message": true,
+        "open": true
+      }
+    },
+    "windows": [
+      {
+        "decorations": false,
+        "transparent": true,
+        "title": "foj-wallpaper",
+        "width": 100,
+        "height": 100
+      }
+    ],
+    "security": {
+      "csp": null
+    },
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "identifier": "com.tauri.foj",
+      "icon": [
+        "icons/icon.ico"
+      ]
+    }
+  }
+}

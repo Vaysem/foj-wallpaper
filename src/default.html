@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>example</title>
+  </head>
+  <body>
+    <style>
+	*{
+	overflow:hidden;
+	margin:0;
+	padding:0;
+	}
+    body{
+      width: 100vw;
+      height: 100vh;
+      background: url("img/fon1.webp") no-repeat center/cover;
+    }
+    .bac-run,.fon {
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      opacity: .8;
+      overflow: hidden;
+    }
+    .fon{opacity: 1}
+    .bac-run div,.fon div {
+      background: url("img/smog.webp") no-repeat center/cover;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+    .s1 {
+      opacity: 0;
+      animation: sb1 6s linear infinite;
+      animation-delay: 0s
+    }
+    .s2 {
+      opacity: 0;
+      animation: sb1 6s linear infinite;
+      animation-delay: 2s
+    }
+    .s3 {
+      opacity: 0;
+      animation: sb1 6s linear infinite;
+      animation-delay: 3s
+    }
+    @keyframes sb1 {
+      0% {
+        opacity: 0;
+        transform: scale(1)
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.5)
+      }
+      99% {
+        opacity: 0;
+        transform: scale(2)
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1)
+      }
+    }
+    .title {
+      text-align: center;
+      color: #FFF;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      letter-spacing: 1px;
+      line-height:2;
+    }
+
+    h1,.time {
+      background-image: url(img/anim.webp);
+      background-size: cover;
+      color: transparent;
+      -moz-background-clip: text;
+      -webkit-background-clip: text;
+      text-transform: uppercase;
+      font-size: 300px;
+      line-height: 300px;
+      margin: 10px 0;
+      filter: drop-shadow(0px 0px 10px #ff00a7) drop-shadow(0px 15px 7px #000);
+      font-family: "Humnst777 Blk BT";
+    }
+    .time{
+      font-size: 62px;
+      line-height: 48px;
+      font-family: Arial;
+      font-weight: bold;
+      filter: drop-shadow(1px -1px 1px #f05) drop-shadow(-1px 1px 1px #05f) drop-shadow(0px 4px 4px #000) drop-shadow(0px 4px 4px #000) drop-shadow(0px 0px 4px #000);
+    }
+    </style>
+    <div class="bac-run">
+      <div class="s1"></div>
+      <div class="s2"></div>
+      <div class="s3"></div>
+    </div>
+    <div class="title">
+      <h1>Foj</h1>
+      <div>wallpaper</div>
+      <div class="time"></div>
+    </div>
+    <script>
+      let time = document.querySelector('.time')
+      setInterval(e=>{time.innerHTML = (new Date().toLocaleTimeString())},1000)
+    </script>
+  </body>
+</html>

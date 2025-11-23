@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="language.js"></script>
+    <style>
+        * {
+            font-family: Arial;
+            position: relative;
+            box-sizing: border-box;
+            margin: 0;            
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        a{color: inherit !important; }
+        a:visited{
+            color:inherit;
+        }
+        body{
+            color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 25px 20px;
+            font-size: 15px;
+        }
+        h1{
+            font-size: 26px;
+            margin:25px 0 15px;
+            border-bottom: 2px solid;
+            color:#000;
+        }
+        h3{
+            font-size: 20px;
+            margin:25px 0 15px;
+            border-bottom: 1px solid;
+            color:#000;
+        }
+        .h3{font-size: 22px;color:#000;}
+        p{
+            font-size: 15px;
+            line-height: 22px;
+            margin: 0 0 15px;
+            text-align: justify;
+        }
+        .container{
+            margin: auto;
+            max-width: 800px;
+        }
+        .d-none{
+            display: none;
+        }
+        table{margin: 0 0 25px 0;border-bottom:1px solid #ddd}
+        th{
+            text-align: left;
+            border-bottom:1px solid;
+        }
+        td{
+            font-size: 13px;
+        }
+        th{
+            font-size: 15px;
+        }
+        th, td{
+            border-color: #ddd;
+            padding: 5px;
+        }
+        tbody tr:nth-child(2n+1){
+            background: #f5f5f5;
+        }
+        tbody tr:nth-child(2n){
+            background: #fefefe;
+        }
+        ul{ margin:10px 0 40px 28px;}
+        li{ margin-bottom: 15px; text-align: justify; line-height: 22px;}
+    </style>
+</head>
+<div class="container">
+    <div class="d-none" id="en">
+        <h1>Documentation FOJ-Wallpaper</h1>
+        <p><b>FOJ-Wallpaper</b> is an application designed to <b>personalize</b> your desktop experience by setting a local HTML file as a dynamic wallpaper. 
+        It leverages the power and dynamism of modern web technologies (CSS, and complex JS scripts). 
+        For extended interaction with the operating system, the application provides built-in <a href="#api_title"><b></b>API extensions</a>.</p>
+
+        
+            <h3>Technical Features</h3>
+            <ul>
+            <li><b>Engine:</b> FOJ-Wallpaper operates on the <b>WebView2 Edge</b> runtime, which is built into the operating system and powered by the <i>Chromium</i> engine. 
+                This ensures full support for all modern web browser features.</li>
+            <li><b>Resource Optimization:</b> Flexible program settings have been implemented, allowing users to <b>mitigate system load</b> by enabling 
+                or disabling resource-intensive API add-ons. This allows for the selection of an optimal configuration, especially for PC owners with limited computing resources.</li>
+            
+                <li><b>Single Instance:</b> To optimize and conserve computational resources, the application features a built-in system for <b>blocking duplicate application launches</b>.</li>
+            
+                <li><b>Drag and Drop:</b> Added functionality for <b>instant wallpaper change  by</b> simply dragging a file onto the application icon.</li>
+                                          
+                <li><b>Supported Formats:</b> The application supports all file formats that can be directly rendered in a standard browser: from <b>images</b> and <b>text</b> documents to <b>video files</b>.</li>
+           
+            </ul>
+            <h3>Security and Audience</h3>
+                <li><b>Security Policy:</b> For security reasons, the application enforces strict adherence to the Security Policy. Specifically, 
+                    tags like AJAX requests in <i>JS</i>, 
+                    and <i>src</i> attributes that refer to remote resources are all <b>blocked</b>.</li>
+                <li><b>Target Audience:</b> This guide is intended for <b>"advanced" users</b> in the field of web development who possess basic knowledge of JS, CSS, and HTML. 
+                To access ready-made HTML wallpapers, please refer to the <a target="_blank" href="https://dev2.com.ua">developer's website</a> or utilize freelance services.</li>
+            </ul>
+    </div>
+    <div class="d-none" id="uk"> 
+    <h1>Документація FOJ-Wallpaper</h1>
+   <p><b>FOJ-Wallpaper</b> — це застосунок, розроблений для <b>персоналізації</b> робочого столу 
+            шляхом встановлення локального HTML-файлу як динамічних шпалер. 
+            Він використовує потужність і динаміку сучасних вебтехнологій (CSS, та складні JS-сценарії). 
+            Для розширеної взаємодії із системою в застосунку передбачені вбудовані <a href="#api_title"><b>API-доповнення</b></a>.</p>        
+    <h3>Технічні Особливості</h3>
+        <ul>
+            <li><b>Рушій:</b> FOJ-Wallpaper функціонує на базі вбудованого в операційну систему <b>WebView2 Edge</b>, який використовує рушій <i>Chromium</i>. 
+                Це забезпечує повну підтримку всіх можливостей сучасного веббраузера.</li>
+            <li><b>Оптимізація Ресурсів:</b> Реалізовано гнучке налаштування програми, що дозволяє <b>нівелювати системне навантаження</b> шляхом увімкнення або вимкнення 
+                ресурсозатратних API-доповнень. Це дає змогу підібрати оптимальну конфігурацію, особливо для власників ПК із обмеженими обчислювальними ресурсами.</li>
+            <li><b>Single Instance:</b> З метою оптимізації та економії обчислювальних ресурсів, застосунок має вбудовану систему <b>блокування дублюючого запуску</b>.</li>
+            <li><b>Drag and Drop:</b> Додано функціонал <b>миттєвої зміни шпалер</b> за допомогою простого перетягування файлу на іконку програми.</li>
+            <li><b>Підтримувані Формати:</b> Програма підтримує всі формати файлів, які можуть бути безпосередньо відкриті в стандартному 
+                браузері: від <b>зображень</b> та <b>текстових</b> документів до <b>відеофайлів</b>.</li>
+        </ul>
+    <h3>Безпека та Аудиторія</h3>
+        <ul>
+            <li><b>Політика Безпеки:</b> З міркувань безпеки, у програмі суворо дотримано норм <b>«Політики безпеки»</b>. Зокрема, 
+                <b>заблоковано</b> AJAX-запити в <i>JS</i> та атрибути <i>src</i>, що посилаються на віддалені ресурси.</li>
+            <li><b>Цільова Аудиторія:</b> Цей посібник розрахований на <b>«просунутого» користувача</b> у сфері веброзробки, 
+                який має базові знання JS, CSS та HTML. Для використання готових HTML-шпалер ви можете скористатися 
+                <a target="_blank" href="https://dev2.com.ua">сайтом розробника</a> або послугами фрилансу.</li>
+        </ul>
+    </div>
+    <div class="d-none" id="ru">
+    <h1>Документация FOJ-Wallpaper</h1>
+    <p><b>FOJ-Wallpaper</b> — это приложение, разработанное для <b>персонализации</b> рабочего стола 
+        путем установки локального HTML-файла в качестве динамических обоев. 
+        Используя всю мощность и динамику современных вебтехнологий (CSS и сложные JS-сценарии). 
+        Для расширенного взаимодействия с системой в приложении предусмотрены встроенные <a href="#api_title"><b>API-дополнения</b></a>.</p> 
+        <h3>Технические особенности</h3> 
+        <ul> 
+        <li><b>Движок:</b> FOJ-Wallpaper функционирует на базе встроенного в операционную систему <b>WebView2 Edge</b>, использующего <i>Chromium</i>. 
+        Это обеспечивает полную поддержку всех web возможностей, аналогично современному браузеру.</li> 
+        <li><b>Оптимизация ресурсов:</b> Реализована гибкая настройка программы, позволяющая <b>нивелировать системную нагрузку</b> вплоть до выключения 
+        ресурсозатратных API-дополнений. Это позволяет подобрать оптимальную конфигурацию, для владельцев с слабым ПК.</li> 
+        <li><b>Single Instance:</b> В целях оптимизации и экономии вычислительных ресурсов, приложение имеет встроенную систему <b>блокировки дублирующего запуска</b>.</li> 
+        <li><b>Drag and Drop:</b> Добавлен функционал <b>мгновенного изменения обоев</b> с помощью простого перетаскивания файла на иконку программы.</li> 
+        <li><b>Поддерживаемые Форматы:</b> Программа поддерживает все форматы файлов, которые могут быть непосредственно открыты в стандартном 
+        браузеры: от <b>изображений</b> и <b>текстовых</b> документов до <b>видеофайлов</b>.</li> 
+        </ul> 
+        <h3>Безопасность и аудитория</h3> 
+        <ul> 
+        <li><b>Политика Безопасности:</b> По соображениям безопасности, в программе строго соблюдены нормы <b>«Политики безопасности»</b>. В частности, 
+        <b>заблокированы, AJAX-запросы в <i>JS</i> и атрибуты <i>src</i>, ссылающиеся на удаленные ресурсы.</li> 
+        <li><b>Целевая Аудитория:</b> Данное руководство рассчитано на <b>«продвинутого» пользователя</b> в сфере вебразработки, 
+        имеющий базовые знания JS, CSS и HTML. Для использования готовых HTML-обоев вы можете воспользоваться 
+        <a target="_blank" href="https://dev2.com.ua">сайтом разработчика</a> или услугами фриланса.</li> 
+        </ul>
+    </div>
+    <div class="d-none" id="fr">
+
+        <h1>Documentation de FOJ-Wallpaper</h1>
+        
+        <p><b>FOJ-Wallpaper</b> est une application conçue pour <b>personnaliser</b> votre bureau
+        en définissant un fichier HTML local comme fond d'écran dynamique.
+        
+        Elle exploite toute la puissance et le dynamisme des technologies web modernes (CSS et scripts JS complexes).
+        
+        Pour une interaction améliorée avec le système, l'application propose des <a href="#api_title"><b>extensions API</b></a> intégrées.</p>
+        
+        <h3>Fonctionnalités techniques</h3>
+        
+        <ul>
+        
+        <li><b>Moteur :</b> FOJ-Wallpaper fonctionne avec le moteur <b>WebView2 Edge</b> intégré, qui utilise <i>Chromium</i>.
+        
+        Cela garantit une prise en charge complète de toutes les fonctionnalités web, similaire à celle d'un navigateur moderne.</li>
+        
+        <li><b>Optimisation des ressources :</b> Une configuration flexible du programme a été implémentée, vous permettant de <b>réduire la charge système</b>, voire de désactiver les modules complémentaires d'API gourmands en ressources. Cela vous permet de choisir la configuration optimale pour les utilisateurs disposant d'un PC moins performant.</li>
+        
+        <li><b>Instance unique :</b> Pour optimiser et économiser les ressources de calcul, l'application intègre un système qui bloque les lancements en double.</li>
+        
+        <li><b>Glisser-déposer :</b> Fonctionnalité ajoutée pour changer instantanément le fond d'écran en faisant simplement glisser un fichier sur l'icône du programme.</li>
+        
+        <li><b>Formats pris en charge :</b> Le programme prend en charge tous les formats de fichiers pouvant être ouverts directement dans les navigateurs standard : des images et documents texte aux fichiers vidéo.</li>
+        
+        </ul>
+        
+        <h3>Sécurité et public</h3>
+        
+        <ul>
+        <li><b>Politique de sécurité :</b> Pour des raisons de sécurité, le programme respecte scrupuleusement la politique de sécurité.</b> En particulier, les balises, les requêtes AJAX en <i>JS</i> et les attributs <i>src</i> référençant des ressources distantes sont bloqués.</li>
+        
+        <li><b>Public cible :</b> Ce guide s’adresse à un utilisateur « avancé » en développement web,
+        
+        possédant des connaissances de base en JS, CSS et HTML. Pour utiliser des fonds d’écran HTML prêts à l’emploi, vous pouvez consulter le site web du développeur ou faire appel à des services de freelance.</li>
+        
+        </ul>
+    </div>    
+    <div class="d-none" id="de">
+        <h1>FOJ-Wallpaper-Dokumentation</h1>
+        <p><b>FOJ-Wallpaper</b> ist eine Anwendung zur <b>Personalisierung</b> Ihres Desktops,
+        indem eine lokale HTML-Datei als dynamisches Hintergrundbild festgelegt wird.
+        
+        Dabei werden die volle Leistungsfähigkeit und Dynamik moderner Webtechnologien (CSS und komplexe JS-Skripte) genutzt.
+        
+        Für eine verbesserte Interaktion mit dem System bietet die Anwendung integrierte <a href="#api_title"><b>API-Erweiterungen</b></a>.</p>
+        
+        <h3>Technische Merkmale</h3>
+        
+        <ul>
+        <li><b>Engine:</b> FOJ-Wallpaper läuft auf der integrierten <b>WebView2 Edge</b>-Engine, die <i>Chromium</i> verwendet.
+        
+        
+        Die Anwendung nutzt die volle Leistungsfähigkeit und Dynamik moderner Webtechnologien (CSS und komplexe JS-Skripte). Dies gewährleistet die volle Unterstützung aller Webfunktionen, ähnlich wie bei einem modernen Browser.</li>
+        <li><b>Ressourcenoptimierung:</b> Es wurde eine flexible Programmkonfiguration implementiert, die es Ihnen ermöglicht, die Systemlast zu reduzieren und sogar ressourcenintensive API-Add-ons zu deaktivieren. Dies ermöglicht Ihnen die Auswahl der optimalen Konfiguration für Benutzer mit einem langsameren PC.</li>
+        <li><b>Einzelinstanz:</b> Um Rechenressourcen zu optimieren und zu schonen, verfügt die Anwendung über ein integriertes System, das doppelte Starts verhindert.</b>
+        <li><b>Drag & Drop:</b> Die neue Funktion ermöglicht es Ihnen, das Hintergrundbild sofort zu ändern, indem Sie einfach eine Datei auf das Programmsymbol ziehen.</b>
+        <li><b>Unterstützte Formate:</b> Das Programm unterstützt alle Dateiformate, die direkt in gängigen Browsern geöffnet werden können: von Bildern und Textdokumenten bis hin zu Videodateien.</li>
+        </ul>
+        <h3>Sicherheit und Zielgruppe</h3>
+        <ul>
+        <li><b>Sicherheitsrichtlinie:</b> Aus Sicherheitsgründen hält sich das Programm strikt an die Sicherheitsrichtlinie.</b> Insbesondere werden folgende Elemente blockiert:
+        
+         AJAX-Anfragen in <i>JS</i> und <i>src</i>-Attribute, die auf externe Ressourcen verweisen.</li>
+        
+        <li><b>Zielgruppe:</b> Diese Anleitung richtet sich an <b>fortgeschrittene</b> Benutzer in der Webentwicklung mit Grundkenntnissen in JS, CSS und HTML. 
+            Um vorgefertigte HTML-Hintergrundbilder zu verwenden, können Sie
+        
+        <a target="_blank" href="https://dev2.com.ua">die Website des Entwicklers</a> oder Freelance-Dienste nutzen.</li>
+        
+        </ul>
+        
+    </div>
+    <div class="d-none" id="pl">
+        <h1>Dokumentacja tapety FOJ</h1>
+        <p><b>Tapeta FOJ</b> to aplikacja przeznaczona do <b>personalizacji</b> pulpitu
+        poprzez ustawienie lokalnego pliku HTML jako dynamicznej tapety.
+        
+        Wykorzystuje pełną moc i dynamikę nowoczesnych technologii internetowych (CSS i złożone skrypty JS).
+        
+        Aby usprawnić interakcję z systemem, aplikacja oferuje wbudowane <a href="#api_title"><b>rozszerzenia API</b></a>.</p>
+        <h3>Funkcje techniczne</h3>
+        <ul>
+        <li><b>Silnik:</b> Tapeta FOJ działa na wbudowanym silniku <b>WebView2 Edge</b>, który wykorzystuje <i>Chromium</i>.
+        Zapewnia to pełną obsługę wszystkich funkcji internetowych, podobnie jak w przypadku nowoczesnych przeglądarek.</li>
+        <li><b>Optymalizacja zasobów:</b> Wprowadzono elastyczną konfigurację programu, która pozwala <b>zmniejszyć obciążenie systemu</b>, a nawet wyłączyć
+        zasobożerne dodatki API. Pozwala to wybrać optymalną konfigurację dla posiadaczy wolniejszych komputerów.</li>
+        <li><b>Pojedyncza instancja:</b> Aby zoptymalizować i oszczędzać zasoby obliczeniowe, aplikacja posiada wbudowany system <b>blokowania duplikatów</b>.</li>
+        <li><b>Przeciągnij i upuść:</b> Dodano funkcję <b>natychmiastowej zmiany tapety</b> poprzez przeciągnięcie pliku na ikonę programu.</li>
+        <li><b>Obsługiwane formaty:</b> Program obsługuje wszystkie formaty plików, które można otwierać bezpośrednio w standardowych
+        przeglądarkach: od <b>obrazów</b> i <b>dokumentów tekstowych</b> po <b>pliki wideo</b>.</li>
+        </ul>
+        <h3>Bezpieczeństwo i odbiorcy</h3>
+        <ul>
+        <li><b>Polityka bezpieczeństwa:</b> Ze względów bezpieczeństwa program ściśle przestrzega <b>„Polityki bezpieczeństwa”</b>. W szczególności blokowane żądania AJAX w <i>JS</i> oraz atrybuty <i>src</i> odwołujące się do zasobów zdalnych.</li>
+        <li><b>Grupa docelowa:</b> Ten przewodnik jest przeznaczony dla <b>zaawansowanego" użytkownika</b> w dziedzinie tworzenia stron internetowych,
+        z podstawową znajomością JS, CSS i HTML. Aby skorzystać z gotowych tapet HTML, możesz skorzystać
+        <a target="_blank" href="https://dev2.com.ua">ze strony internetowej dewelopera</a> lub usług freelancera.</li>
+        </ul>
+    </div>
+    <div class="d-none" id="es">
+        <h1>Documentación de FOJ-Wallpaper</h1>
+        <p><b>FOJ-Wallpaper</b> es una aplicación diseñada para <b>personalizar</b> tu escritorio
+        configurando un archivo HTML local como fondo de pantalla dinámico.
+        
+        Utiliza toda la potencia y el dinamismo de las tecnologías web modernas (CSS y scripts JS complejos).
+        
+        Para una mejor interacción con el sistema, la aplicación proporciona <a href="#api_title"><b>extensiones API</b></a> integradas.</p>
+        <h3>Características técnicas</h3>
+        <ul>
+        <li><b>Motor:</b> FOJ-Wallpaper se ejecuta en el motor <b>WebView2 Edge</b> integrado, que utiliza <i>Chromium</i>.
+        
+        Esto garantiza la compatibilidad total con todas las funcionalidades web, de forma similar a un navegador moderno.</li>
+        <li><b>Optimización de recursos:</b> Se ha implementado una configuración flexible del programa, que permite <b>reducir la carga del sistema</b>, incluso deshabilitando complementos de API que consumen muchos recursos. Esto le permite elegir la configuración óptima para usuarios con un PC más lento.</li>
+        <li><b>Instancia única:</b> Para optimizar y conservar los recursos informáticos, la aplicación cuenta con un sistema integrado que <b>bloquea las ejecuciones duplicadas</b>.</li>
+        <li><b>Arrastrar y soltar:</b> Se ha añadido la función para <b>cambiar el fondo de pantalla al instante</b> con solo arrastrar un archivo al icono del programa.</li>
+        <li><b>Formatos compatibles:</b> El programa admite todos los formatos de archivo que se pueden abrir directamente en navegadores estándar:
+        
+        desde <b>imágenes</b> y documentos de <b>texto</b> hasta <b>archivos de vídeo</b>.</li>
+        </ul>
+        <h3>Seguridad y audiencia</h3>
+        <ul>
+        <li><b>Política de seguridad:</b> Por motivos de seguridad, el programa cumple estrictamente con la <b>Política de seguridad</b>. 
+            En particular, se bloquean las etiquetas, las solicitudes AJAX en <i>JS</i> y los atributos <i>src</i> que hacen referencia a recursos remotos.</li>
+        
+        <li><b>Público objetivo:</b> Esta guía está dirigida a usuarios con un nivel avanzado de desarrollo web, 
+        con conocimientos básicos de JS, CSS y HTML. Para usar fondos de pantalla HTML prediseñados, puede consultar
+        
+        <a target="_blank" href="https://dev2.com.ua">el sitio web del desarrollador</a> o contratar servicios freelance.</li>
+        
+        </ul>
+        
+    </div>
+    <div class="d-none" id="it">
+        <h1>Documentazione di FOJ-Wallpaper</h1>
+        <p><b>FOJ-Wallpaper</b> è un'applicazione progettata per <b>personalizzare</b> il desktop
+        impostando un file HTML locale come sfondo dinamico.
+        
+        Sfrutta tutta la potenza e la dinamicità delle moderne tecnologie web (CSS e script JS complessi).
+        
+        Per una migliore interazione con il sistema, l'applicazione fornisce <a href="#api_title"><b>estensioni API</b></a> integrate.</p>
+        <h3>Caratteristiche tecniche</h3>
+        <ul>
+        <li><b>Motore:</b> FOJ-Wallpaper funziona con il motore integrato <b>WebView2 Edge</b>, che utilizza <i>Chromium</i>. Ciò garantisce il pieno supporto di tutte le funzionalità web, in modo simile a un browser moderno.</li>
+        <li><b>Ottimizzazione delle risorse:</b> è stata implementata una configurazione flessibile del programma, che consente di <b>ridurre il carico di sistema</b>, anche disabilitando
+        i componenti aggiuntivi API che richiedono molte risorse. Ciò consente di scegliere la configurazione ottimale per gli utenti con un PC più lento.</li>
+        <li><b>Singola istanza:</b> per ottimizzare e risparmiare risorse di elaborazione, l'applicazione dispone di un sistema integrato che <b>blocca gli avvii duplicati</b>.</li>
+        <li><b>Trascinamento della selezione:</b> funzionalità aggiuntiva per <b>cambiare istantaneamente lo sfondo</b> semplicemente trascinando un file sull'icona del programma.</li>
+        <li><b>Formati supportati:</b> il programma supporta tutti i formati di file che possono essere aperti direttamente nei browser standard: dalle <b>immagini</b> e dai documenti di <b>testo</b> ai <b>file video</b>.</li>
+        </ul>
+        <h3>Sicurezza e pubblico</h3>
+        <ul>
+        <li><b>Criteri di sicurezza:</b> per motivi di sicurezza, il programma aderisce rigorosamente ai <b>"Criteri di sicurezza"</b>. In particolare, sono bloccati
+        le richieste AJAX in <i>JS</i> e gli attributi <i>src</i> che fanno riferimento a risorse remote.</li>
+        <li><b>Pubblico di destinazione:</b> Questa guida è destinata a un utente <b>"avanzato"</b> nello sviluppo web,
+        con conoscenze di base di JS, CSS e HTML. Per utilizzare sfondi HTML già pronti, è possibile utilizzare
+        <a target="_blank" href="https://dev2.com.ua">il sito web dello sviluppatore</a> o servizi freelance.</li>
+        </ul>
+    </div>
+    <div class="d-none" id="nl">
+        <h1>FOJ-Wallpaper Documentatie</h1>
+        <p><b>FOJ-Wallpaper</b> is een applicatie die is ontworpen om je bureaublad te <b>personaliseren</b>
+        door een lokaal HTML-bestand als dynamische achtergrond in te stellen.
+        
+        Gebruikmakend van de volledige kracht en dynamiek van moderne webtechnologieën (CSS en complexe JS-scripts).
+        
+        Voor een verbeterde interactie met het systeem biedt de applicatie ingebouwde <a href="#api_title"><b>API-extensies</b></a>.</p>
+        <h3>Technische kenmerken</h3>
+        <ul>
+        <li><b>Engine:</b> FOJ-Wallpaper draait op de ingebouwde <b>WebView2 Edge</b> engine, die gebruikmaakt van <i>Chromium</i>. Dit garandeert volledige ondersteuning voor alle webmogelijkheden, vergelijkbaar met een moderne browser.</li>
+        <li><b>Resource-optimalisatie:</b> Er is een flexibele programmaconfiguratie geïmplementeerd, waardoor u <b>de systeembelasting kunt verlagen</b> en zelfs
+        resource-intensieve API-add-ons kunt uitschakelen. Hiermee kunt u de optimale configuratie kiezen voor gebruikers met een tragere pc.</li>
+        <li><b>Eén exemplaar:</b> Om computerbronnen te optimaliseren en te besparen, heeft de applicatie een ingebouwd systeem dat <b>dubbele lanceringen blokkeert</b>.</li>
+        <li><b>Slepen en neerzetten:</b> Extra functionaliteit voor <b>het direct wijzigen van de achtergrond</b> door simpelweg een bestand naar het programmapictogram te slepen.</li>
+        <li><b>Ondersteunde formaten:</b> Het programma ondersteunt alle bestandsformaten die direct in standaardbrowsers kunnen worden geopend: van <b>afbeeldingen</b> en <b>tekst</b> tot <b>videobestanden</b>.</li>
+        </ul>
+        <h3>Beveiliging en doelgroep</h3>
+        <ul>
+        <li><b>Beveiligingsbeleid:</b> Om veiligheidsredenen houdt het programma zich strikt aan het <b>"Beveiligingsbeleid"</b>. Met name AJAX-verzoeken in <i>JS</i> en <i>src</i>-attributen die verwijzen naar externe bronnen worden geblokkeerd.</li>
+        <li><b>Doelgroep:</b> Deze handleiding is bedoeld voor een <b>"gevorderde" gebruiker</b> in webontwikkeling,
+        met basiskennis van JS, CSS en HTML. Om kant-en-klare HTML-achtergronden te gebruiken, kunt u gebruikmaken van
+        <a target="_blank" href="https://dev2.com.ua">de website van de ontwikkelaar</a> of freelance diensten.</li>
+        </ul>
+    </div>
+    <div class="d-none" id="zh">
+        <h1>FOJ-Wallpaper 文件</h1>
+        
+        <p><b>FOJ-Wallpaper</b> 是一款旨在<b>個人化</b>桌面的應用程序，
+        
+        它透過將本地 HTML 檔案設定為動態壁紙來實現。
+        
+        它充分利用了現代 Web 技術（CSS 和複雜的 JS 腳本）的強大功能和動態特性。
+        
+        為了增強與系統的交互，該應用程式提供了內建的<a href="#api_title"><b>API 擴充</b></a>。 </p>
+        <h3>技術特性</h3>
+        <ul>
+        <li><b>引擎：</b> FOJ-Wallpaper 運行在內建的 <b>WebView2 Edge</b> 引擎上，該引擎使用 <i>Chromium</i>。
+        
+        這確保了對所有 Web 功能的全面支持，類似於現代瀏覽器。 </li>
+        
+        <li><b>資源最佳化：</b> 我們實作了靈活的程式配置，讓您<b>降低系統負載</b>，甚至可以停用資源密集型 API 外掛程式。 </b>這樣，即使是電腦配置較低的使用者也能選擇最佳配置。 </li>
+        
+        <li><b>單一實例：</b>為了優化和節省運算資源，該應用程式內建了一個系統，<b>阻止重複啟動</b>。 </li>
+        
+        <li><b>拖放：</b>新增了拖放功能，只需將檔案拖曳到程式圖示上，即可<b>立即更換桌布</b>。 </li>
+        
+        <li><b>支援的格式：</b>程式支援所有可在標準瀏覽器中直接開啟的文件格式：從<b>圖片</b>和<b>文字</b>文件到<b>影片</b>檔。 </li>
+        
+        </ul>
+        
+        <h3>安全性與受眾</h3>
+        
+        <ul>
+        <li><b>安全策略：</b>出於安全考慮，該程序嚴格遵守<b>「安全策略」</b>。 </li>具體來說，以下程式碼將被阻止：
+        
+        標籤、<i>JS</i> 中的 AJAX 請求以及引用遠端資源的 <i>src</i> 屬性。 </li>
+        
+        <li><b>目標受眾：</b> 本指南面向具備 Web 開發「高階」知識的用戶，</b> 並要求具備 JS、CSS 和 HTML 的基礎知識。要使用現成的 HTML 壁紙，您可以訪問
+        
+        <a target="_blank" href="https://dev2.com.ua">開發者的網站</a> 或使用自由職業服務。 </li>
+        
+        </ul>
+        
+    </div>
+    <table cellspacing="0" cellpadding="0"> 
+        <thead> 
+        <tr> 
+        <th colspan="4" class="h3" id="api_title">API</th> 
+        </tr> 
+        <tr> 
+        <th width="260px" data-lang="table_name"></th> 
+        <th data-lang="table_type"></th> 
+        <th width="155px" data-lang="table_type_arg"></th> 
+        <th data-lang="table_shorts_desk"></th> 
+        </tr> 
+        </thead> 
+        <tbody> 
+        <tr> 
+        <td><b>parse_url</b>( <b style="color:#4285f4;">text </b>)</td> 
+        <td>function</td> 
+        <td>text</td> 
+        <td data-lang="table_desk_parser"></td> 
+        </tr> 
+        <tr style="height: 20px"> 
+        <td><b>sys_info</b>( { <b style="color:#4285f4;">cpu</b>: float, <b style="color:#4285f4;">ram</b>: float } )</td> 
+        <td>function</td> 
+        <td>object</td> 
+        <td data-lang="table_desk_sys_info"></td> 
+        </tr> 
+        <tr style="height: 20px"> 
+        <td><b>set_mouse</b>( <b style="color:#4285f4;">x</b>: int, <b style="color:#4285f4;">y</b>: int )</td> 
+        <td>function</td> 
+        <td>int, int</td> 
+        <td data-lang="table_desk_mouse"></td> 
+        </tr> 
+        <tr style="height: 20px">
+<td><pre><b>context_command</b>= { 
+    <span style="color:#7e5b36;">&quot;name command 1&quot;</span>: () =&gt; console.log(1), 
+    <span style="color:#7e5b36;">&quot;name command 2&quot;</span>: &quot;calc.exe&quot;
+}</pre></td> 
+        <td>object</td> 
+        <td>-</td> 
+        <td data-lang="table_desk_command"></td> 
+        </tr> 
+        </tbody> 
+    </table>
+    <p>Ⓒ 2025 FOJ-wallpaper | version 0.1.1</p>
+</div>
+<script>
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    const win = window.__TAURI__.window.appWindow;
+    document.addEventListener('keydown', e => {
+        if (e.ctrlKey && e.shiftKey) {
+            win.close()
+        }
+    })
+    languageInsert()
+
+    win.setTitle('FOJ wallpaper ' + doc)
+    document.querySelectorAll('.d-none').forEach(e=>{
+        e.style = '';
+        if(e.id == lang_code){
+            e.style = 'display:block'
+        }
+    })
+    window.addEventListener('storage', event => {
+        if(event.key == 'lang'){
+            location.hash = "#temp";
+            location.reload()
+        }
+    })
+    async function showWindowAnim() {
+        let endP = await win.innerPosition(), i = 0;
+        endP.y += 800;  
+        win.setPosition(endP)
+        win.show();
+        document.body.classList.add('blur');
+        let iter = setInterval(e => {
+            if (i < 41){
+                i++
+                endP.y -= 20
+                win.setPosition(endP)
+            } else {
+                endP.y -= 11;
+                win.setPosition(endP) 
+                document.body.classList.remove('blur');
+                clearInterval(iter)
+            }
+        }, 4)
+    }
+    !location.hash && showWindowAnim()
+</script>
+</body>
+</html>

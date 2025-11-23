@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>FOJ wallpaper</title>
+</head>
+<body>
+<style>
+    html, body, iframe {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #000;
+        overflow: hidden;
+        border: none;
+        display: flex;
+        justify-content: center;
+    }
+</style>
+<script>
+    const {invoke} = window.__TAURI__.tauri;
+    const webwiew = window.__TAURI__.window.WebviewWindow;
+
+    let web, default_variable = {
+        old_pid: 0,
+        parse_url: '',
+        parse_url_time: 1,
+        parse_url_on: 0,
+        sys_info_time: 1,
+        sys_info_on: 1,
+        set_mouse_time: 0.03,
+        set_mouse_on: 1,
+        context_command_on: 1,
+        theme_left_tray_menu: '#d00040'
+    }
+    for (let [key, val] of Object.entries(default_variable)) {
+        if (!localStorage.getItem(key)) {
+            localStorage.setItem(key, val)
+        }
+    }
+
+    function ToUrl(path) {
+        path = path.replaceAll('\\', '/');
+        path = path.replaceAll(' ', '%20');
+        var drive = /(.)\:\//
+        return path.replace(drive, 'file:///$1:/');
+    }
+
+    async function setFon() {
+        let host_file = localStorage.getItem('path')
+        await invoke("valid", {path: host_file}).then(value => {
+            newWindow(value)
+        }, reason => {
+            console.warn('setFon ', reason)
+        })
+    }
+
+    async function newWindow(is_file) {
+        let host_file = localStorage.getItem('path')
+        web = new webwiew('main-fon', {
+            url: ToUrl(is_file ? host_file : 'default.html'),
+            title: "fon",
+            visible: false,
+            fullscreen: true,
+        })
+        web.once('tauri://created', function () {
+            fonScren()
+        })
+    }
+
+    async function fonScren() {
+        await invoke("fon", {
+            label: 'main-fon',
+            show: true,
+            contextCommand: localStorage.getItem('context_command_on') == 1 ? true : false
+        }).then(value => {
+            web.show()
+            localStorage.getItem('set_mouse_on') == 1 && mouse_position()
+            localStorage.getItem('sys_info_on') == 1 && sys_info()
+            localStorage.getItem('parse_url_on') == 1 && parse_url()
+        }, reason => {
+            console.warn('fonScren ', reason)
+        })
+    }
+
+    function mouse_position() {
+        setInterval(async e => {
+            await invoke("mouse_pos")
+        }, parseFloat(localStorage.getItem('set_mouse_time')) * 1000);
+    }
+
+    function sys_info() {
+        setInterval(async e => {
+            await invoke("sys_info")
+        }, parseFloat(localStorage.getItem('sys_info_time')) * 1000);
+    }
+
+    function parse_url() {
+        const url = localStorage.getItem('parse_url').trim()
+        if (url) {
+            invoke("parse_url", {url: url})
+            setInterval(async e => {
+                await invoke("parse_url", {url: url})
+            }, parseFloat(localStorage.getItem('parse_url_time')) * 1000);
+        }
+    }
+        
+    setInterval(() => {
+        invoke("exit_program", {pid: parseInt(localStorage.getItem('old_pid'))})
+    },1000)
+    
+    setFon()
+</script>
+</body>
+</html>

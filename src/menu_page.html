@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Left menu</title>
+</head>
+<script src="language.js"></script>
+<body>
+<style>
+    :root{
+        --foj: #D7006D;
+    }
+    *{
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    html{
+        background: none;
+    }
+    html,body{
+        overflow: hidden;
+        font-family: Arial;
+        border-radius: 8px;
+    }
+    body{
+        background: transparent;
+        border:1px solid #aaa;
+        margin: 0;
+    }
+    section{
+        background: #fff;
+        padding: 5px 5px 8px;
+    }
+    ul,h4{margin: 0;padding: 0; color: var(--foj);font-size: 16px;position: relative;}
+    ul{margin-top: 4px;}
+    li{
+        color:#000;
+        list-style: none;
+        margin: 0 1px;
+        padding: 5px;
+        transition: all 0.1s linear;
+        cursor: pointer;
+        background-image: linear-gradient(90deg, var(--foj) 50%, #0000 50%);
+        background-size: 200%;
+        background-position-x: calc(100% + 2px);
+        font-size: 14px;
+        white-space: nowrap;
+        border-radius: 0 7px 7px 0;
+    }
+    li:hover{
+        background-position-x:0%;
+        color:#fff;
+    }
+</style>
+<section>
+<h4  data-lang="menu_page"></h4>
+<ul>
+</ul>
+</section>
+<script>
+    languageInsert();
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    localStorage.getItem('theme_left_tray_menu') && document.documentElement.style.setProperty('--foj', localStorage.getItem('theme_left_tray_menu'))
+
+    const {invoke} = window.__TAURI__.tauri;
+    const win = window.__TAURI__.window.appWindow;
+
+    document.addEventListener('keydown', e => {
+        if (e.ctrlKey && e.shiftKey) {
+            win.close()
+        }
+    })
+    async function send(c){
+        await invoke("window_eval",{cname:c})
+    }
+    async function execute_path(c){
+        await invoke("run_command",{path:c})
+    }
+    let item = decodeURI(location.hash.replace('#','')).split(';')
+    if(item.length > 1){
+        const ul = document.querySelector('ul');
+        item.forEach((e,i)=>{
+            let command = e.split('🗲')
+            let li = document.createElement('li')
+            if(command.length > 1){
+                li.innerHTML = command[0]
+                li.dataset.execute_path = command[1]
+            }else{
+                li.innerHTML = e
+            }
+            ul.appendChild(li)
+        })
+        ul.onclick = e => {
+            let command = e.target
+            if(command.dataset.execute_path){
+                execute_path(command.dataset.execute_path)
+            }else{
+                send(command.innerHTML)
+            }
+            win.close()
+        }
+    }else{
+        win.close()
+    }
+    win.listen("tauri://focus", ({event, payload}) => {
+        win.show()
+    })
+    win.listen("tauri://blur", ({event, payload}) => {
+        win.close()
+    })
+    win.setFocus();
+</script>
+</body>
+</html>
