@@ -5,7 +5,7 @@
 extern crate winreg;
 use serde_json::Value;
 use winreg::{enums::*, RegKey};
-use std::{io, path::Path, env, process, process::Command, time::Duration, thread::sleep, sync::{Mutex, Arc} };
+use std::{ os::windows::process::CommandExt, path::Path, env, process, process::Command, time::Duration, thread::sleep, sync::{Mutex, Arc} };
 
 use serde_json;
 
@@ -28,7 +28,7 @@ const APP_NAME: &str = "foj-wallpaper";
 
 const REG_PATH_LANGUAGE: &str = r"Software\dev2\fog-wallpapers";
 const LANGUAGE_FILE: &str = include_str!("../../src/language.json");
-
+const CREATE_NO_WINDOW: u32 = 0x08000000;
 static MAIN_PID: Lazy<u32> = Lazy::new(|| {
     process::id()
 });
@@ -149,12 +149,8 @@ fn get_autoload() -> bool {
         Ok(_path) => {
             return true
         }
-        Err(e) => {
-            if e.kind() == io::ErrorKind::NotFound {
-                return false
-            } else {
-                return false
-            }
+        Err(_e) => {
+            return false
         }
     }
 }
@@ -204,12 +200,24 @@ fn sys_info(app: AppHandle, state: tauri::State<SharedSystem>) -> String {
 }
 
 #[tauri::command]
-fn run_command(path: &str) -> String {
-    if path.trim() == "" { return serde_json::from_str(r#"{"error":"not command"}"#).expect("Can't parse json"); }
-    let child = Command::new(path.trim()).spawn();    
+fn run_command(app: AppHandle, path: &str) {
+    if app.get_window("main-fon").is_none() {
+        return;
+    }
+    let send_foj = app.get_window("main-fon").unwrap();
+
+    if path.trim() == "" {
+        send_foj.eval("console.warn('error: is not command');").unwrap();
+        return 
+    }
+    
+    let child = Command::new(path.trim()).creation_flags(CREATE_NO_WINDOW).spawn();
+
     match child {
-        Ok(_) => format!("{{\"success\":\"{}\"}}", path),
-        Err(e) => format!("{{\"error\":\"{}\"}}", e),
+        Ok(_) => send_foj.eval( &format!("console.log('success: RUN command > {}');", path.replace("\\","\\\\"))).unwrap(),
+        Err(_e) =>{
+            let _ = Command::new("cmd").creation_flags(CREATE_NO_WINDOW).arg("/C").arg("start").arg("").arg(path.trim()).spawn();
+        }
     }
 }
 
